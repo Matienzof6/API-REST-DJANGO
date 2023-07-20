@@ -83,7 +83,7 @@ DATABASES = {
         'PASSWORD':'',
         'NAME':'django_api',
         'OPTIONS':{
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" #Este comando indica a MySQL que debe ejecutar en modo estricto para que no de advertencias cuando te conectas
         },
     }
 }

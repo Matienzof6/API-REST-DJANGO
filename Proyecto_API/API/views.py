@@ -10,11 +10,11 @@ class CompanyView(View):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs) #Con esta funcion y el decorador hace que nos saltemos el error del CRSF, la funcion dispatch es predeterminada
 
     def get(self, request, id=0):
         if (id>0):
-            companies=list(Company.objects.filter(id=id).values())
+            companies=list(Company.objects.filter(id=id).values()) #mediante el filter obtenemos las compañias de una en una mediante el id
             if len(companies)>0:
                 company=companies[0]
                 datos={'message':"Success",'company':company}
@@ -32,7 +32,7 @@ class CompanyView(View):
 
     def post(self, request):
         # print(request.body)
-        jd=json.loads(request.body)
+        jd=json.loads(request.body) #el json.loads sirve para convertir el archivo json en un dic de python
         # print(jd)
         Company.objects.create(name=jd['name'], website=jd['website'], foundation=jd['foundation'])
         datos={'message':"Success"}
